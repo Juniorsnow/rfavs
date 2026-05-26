@@ -41,3 +41,6 @@ dist-ssr
 .vite
 .lovable/
 build
+
+# Ignore Bun lockfile when using npm
+bun.lock
