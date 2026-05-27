@@ -1,4 +1,4 @@
-# Academia Victor Simon RFA — Landing
+# Centro de Lutas VS — Landing
 
 Projeto de landing page (Vite + React + TanStack Start) da Academia Victor Simon RFA.
 

@@ -9,13 +9,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Academia Victor Simon RFA — Jiu-Jitsu & Muay Thai" },
+      { title: "Centro de Lutas VS — Jiu-Jitsu & Muay Thai" },
       {
         name: "description",
         content:
-          "Academia Victor Simon RFA: Jiu-Jitsu e Muay Thai. Treine com os melhores professores e desperte o lutador que existe em você.",
+          "Centro de Lutas VS: Jiu-Jitsu e Muay Thai. Treine com os melhores professores e desperte o lutador que existe em você.",
       },
-      { property: "og:title", content: "Academia Victor Simon RFA" },
+      { property: "og:title", content: "Centro de Lutas Victor Simon" },
       {
         property: "og:description",
         content: "Jiu-Jitsu e Muay Thai. Treine onde os campeões treinam.",
@@ -27,19 +27,25 @@ export const Route = createFileRoute("/")({
 
 const modalidades = [
   {
-    nome: "Jiu-Jitsu",
+    nome: "Jiu-Jitsu Adulto & Kids",
     img: modJiu,
     desc: "Arte marcial focada em técnicas de imobilização e finalização no combate corpo a corpo.",
   },
   {
-    nome: "Muay Thai",
+    nome: "Muay Thai Adulto & Kids",
     img: modMuay,
     desc: "Arte marcial tailandesa que utiliza socos, chutes, joelhadas e cotoveladas em combate em pé.",
   },
 ];
 
 const professores = [
-  { nome: "Victor Simon", esp: "Muay Thai", iniciais: "VS", img: "/victor-simon.jpg" },
+  {
+    nome: "Victor Simon",
+    esp: "Muay Thai",
+    iniciais: "VS",
+    img: "/victor-simon.jpg",
+    desc: "Professor formado pela UFSC em Educação Física, pratica artes marciais desde os 6 anos, com mais de 70 lutas e 15 anos de experiência como professor.",
+  },
   { nome: "Luan Hakym", esp: "Muay Thai", iniciais: "LH", img: "/luan-hakym.jpg" },
   { nome: "João Rosa", esp: "Jiu-Jitsu", iniciais: "JR", img: "/joao-rosa.jpg" },
   { nome: "Bruno Ribeiro", esp: "Muay Thai", iniciais: "BR", img: "/bruno-ribeiro.jpg" },
@@ -55,6 +61,16 @@ const navItems = [
 
 function Landing() {
   const [open, setOpen] = useState(false);
+  const [contName, setContName] = useState("");
+  const [contPhone, setContPhone] = useState("");
+  const [contMessage, setContMessage] = useState("");
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    const msg = `Olá me chamo ${contName}, meu telefone é ${contPhone} tenho interesse em marcar uma aula experimental e ter mais informações a respeito das aulas. Minha mensagem é: ${contMessage}`;
+    const url = `https://wa.me/5548998314433?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -62,10 +78,10 @@ function Landing() {
       <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoVs} alt="VS" className="h-10 w-10 rounded-sm" width={40} height={40} />
+            <img src={logoVs} alt="Victor Simon" className="h-10 w-10 rounded-sm" width={40} height={40} />
             <div className="leading-tight">
-              <div className="display text-sm tracking-widest sm:text-base">Academia</div>
-              <div className="display text-xs text-primary sm:text-sm">Victor Simon RFA</div>
+              <div className="display text-sm tracking-widest sm:text-base">Centro de Lutas</div>
+              <div className="display text-xs text-primary sm:text-sm">Victor Simon</div>
             </div>
           </a>
 
@@ -129,13 +145,12 @@ function Landing() {
             Desde o primeiro Jab, até o último round.
           </span>
           <h1 className="display text-5xl leading-[0.95] sm:text-7xl md:text-8xl lg:text-9xl">
-            FORJADOS
+            DESPERTE
             <br />
-            <span className="text-primary">NO COMBATE</span>
+            <span className="text-primary">SUA FORÇA</span>
           </h1>
           <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Academia Victor Simon RFA — onde técnica, disciplina e garra transformam você em campeão.
-            Jiu-Jitsu e Muay Thai sob o comando de quem vive a arte.
+            Centro de Lutas VS — um espaço onde técnica, disciplina e respeito transformam a sua vida.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -158,10 +173,10 @@ function Landing() {
         <div className="relative border-y border-border bg-card/60 backdrop-blur">
           <div className="mx-auto grid max-w-7xl grid-cols-2 divide-border md:grid-cols-4 md:divide-x">
             {[
-              ["5", "Anos no Tatame"],
-              ["+200", "Alunos Ativos"],
+              ["+15", "Anos no Tatame"],
+              ["+300", "Alunos Ativos"],
               ["5", "Faixas Pretas"],
-              ["5", "Títulos"],
+              ["+10", "Títulos"],
             ].map(([n, l]) => (
               <div key={l} className="px-6 py-6 text-center">
                 <div className="display text-4xl text-primary sm:text-5xl">{n}</div>
@@ -178,7 +193,7 @@ function Landing() {
           <div>
             <div className="display mb-3 text-xs tracking-[0.4em] text-primary">Modalidades</div>
             <h2 className="display text-4xl sm:text-5xl md:text-6xl">
-              Escolha sua <span className="text-primary">arte</span>
+              Escolha sua <span className="text-primary"> arte marcial</span>
             </h2>
           </div>
         </div>
@@ -226,17 +241,17 @@ function Landing() {
           </div>
           <div className="space-y-5 text-muted-foreground">
             <p className="text-base sm:text-lg">
-              A Academia Victor Simon RFA nasceu da paixão pelo combate e do respeito profundo pela
+              Centro de Lutas VS nasceu da paixão pelo combate e do respeito profundo pela
               tradição das artes marciais. Fundada por Victor Simon, faixa preta dedicado à formação
-              de atletas e cidadãos, nossa casa virou referência na região.
+              de atletas e cidadãos, nosso centro de lutas virou referência na região.
             </p>
             <p>
-              Aqui, cada aluno recebe atenção individual. Do iniciante que pisa pela primeira vez no
-              tatame ao competidor que sobe ao ringue em busca do título — todos são forjados sob
-              os mesmos pilares: <span className="text-primary">técnica, disciplina e raça</span>.
+              Aqui, cada aluno recebe atenção individual. Do iniciante que tem o primeiro contato 
+              com o esporte ao competidor que sobe ao ringue em busca do título — todos são forjados sob
+              os mesmos pilares: <span className="text-primary">técnica, disciplina e respeito</span>.
             </p>
             <p>
-              Mais que uma academia, somos uma família que treina junta, vence junta e cresce junta.
+              Mais do que um centro de lutas, enfrentamos juntos nossos desafios.
             </p>
           </div>
         </div>
@@ -257,15 +272,26 @@ function Landing() {
               key={p.nome}
               className="group relative border border-border bg-card p-6 transition hover:border-primary"
             >
-              <Avatar className="h-24 w-24 rounded-full border-2 border-primary bg-background">
-                {p.img ? (
-                  <AvatarImage src={p.img} alt={`Foto do professor ${p.nome}`} />
-                ) : (
-                  <AvatarFallback>{p.iniciais}</AvatarFallback>
-                )}
-              </Avatar>
-              <h3 className="display mt-6 text-xl">{p.nome}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{p.esp}</p>
+              <div className="flex items-center gap-4">
+                <Avatar className="h-24 w-24 rounded-full border-2 border-primary bg-background">
+                  {p.img ? (
+                    <AvatarImage src={p.img} alt={`Foto do professor ${p.nome}`} />
+                  ) : (
+                    <AvatarFallback>{p.iniciais}</AvatarFallback>
+                  )}
+                </Avatar>
+                <div>
+                  <h3 className="display text-xl">{p.nome}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{p.esp}</p>
+                </div>
+              </div>
+
+              {p.desc ? (
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                  {p.desc}
+                </p>
+              ) : null}
+
               <div className="display absolute right-4 top-4 text-xs tracking-widest text-muted-foreground transition group-hover:text-primary">
                 /0{professores.indexOf(p) + 1}
               </div>
@@ -300,11 +326,13 @@ function Landing() {
 
             <form
               className="space-y-4 border border-border bg-background/60 p-6 sm:p-8"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
             >
               <div>
                 <label className="display text-xs tracking-widest text-muted-foreground">Nome</label>
                 <input
+                  value={contName}
+                  onChange={(e) => setContName(e.target.value)}
                   className="mt-2 w-full border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary"
                   placeholder="Seu nome"
                 />
@@ -312,6 +340,8 @@ function Landing() {
               <div>
                 <label className="display text-xs tracking-widest text-muted-foreground">Telefone</label>
                 <input
+                  value={contPhone}
+                  onChange={(e) => setContPhone(e.target.value)}
                   className="mt-2 w-full border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary"
                   placeholder="(11) 99999-0000"
                 />
@@ -320,6 +350,8 @@ function Landing() {
                 <label className="display text-xs tracking-widest text-muted-foreground">Mensagem</label>
                 <textarea
                   rows={4}
+                  value={contMessage}
+                  onChange={(e) => setContMessage(e.target.value)}
                   className="mt-2 w-full resize-none border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary"
                   placeholder="Quero agendar uma aula experimental"
                 />
@@ -339,9 +371,9 @@ function Landing() {
       <footer className="border-t border-border bg-background">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-10 sm:px-6 md:flex-row">
           <div className="flex items-center gap-3">
-            <img src={logoVs} alt="VS" className="h-10 w-10" width={40} height={40} />
+            <img src={logoVs} alt="VICTOR SIMON" className="h-10 w-10" width={40} height={40} />
             <div>
-              <div className="display text-sm tracking-widest">Academia Victor Simon RFA</div>
+              <div className="display text-sm tracking-widest">Centro de Lutas VS</div>
               <div className="text-xs text-muted-foreground">Tropa da mão limpinha · Desde 2021</div>
             </div>
           </div>
